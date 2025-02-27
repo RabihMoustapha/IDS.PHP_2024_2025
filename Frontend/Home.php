@@ -12,7 +12,7 @@
     <link type="text/css" rel="stylesheet" href="CSS/Home.css">
 </head>
 
-<body onload="getData()">
+<body onload="Get()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
@@ -33,7 +33,7 @@
                             </a>
                         </li>
                     </ul>
-                    <form class="d-flex w-100 me-3" action="../Backend/search.php" method="post">
+                    <form class="d-flex w-100 me-3" action="javascript:void(0)" method="post" onsubmit="Search()">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchQuery" id="searchQuery">
                         <button class="btn btn-outline-success" type="submit">
                             <img src="IMG/search.png" alt="Search" class="img-fluid" style="width: 20px; height: 20px;">

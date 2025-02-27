@@ -6,7 +6,7 @@ function isLoggedIn() {
     }
 }
 
-async function getData() {
+async function Get() {
     try {
         const Get = "http://localhost/IDS/Backend/Post/Get.php";
         const response = await fetch(Get, {
@@ -21,7 +21,42 @@ async function getData() {
         console.log(data);
 
         if (data.success && Array.isArray(data.item)) {
-            container.innerHTML = "";
+            container.innerHTML += "";
+
+            data.item.forEach(element => {
+                container.innerHTML += `
+                    <div>
+                        <p>${element.profileName}</p>
+                        <p>${element.title}</p>
+                        <p>${element.description}</p>
+                    </div>
+                `;
+            });
+        } else {
+            alert("Data failed: " + (data.message || "Invalid data structure"));
+        }
+    } catch (err) {
+        console.error("Data error:", err);
+        alert("An error occurred during fetching.");
+    }
+}
+
+async function Search() {
+    try {
+        const Search = "http://localhost/IDS/Backend/Post/Search.php";
+        const response = await fetch(Search, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) throw new Error("Fetching data failed");
+        const data = await response.json();
+        console.log(data);
+
+        if (data.success && Array.isArray(data.item)) {
+            container.innerHTML += "";
 
             data.item.forEach(element => {
                 container.innerHTML += `
