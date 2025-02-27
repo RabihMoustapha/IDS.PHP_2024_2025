@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="Home.html">WebApi</a>
+                <a class="navbar-brand" href="../Home.html">WebApi</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,7 +43,7 @@
             <form action="javascript:void(0)" method="post" onsubmit="Create()">
                 <input type="text" class="form-control" placeholder="Title" name="title" required>
                 <textarea class="form-control" placeholder="Content" name="content" rows="5" required></textarea>
-                <button type="submit">Submit Post</button>
+                <button class="btn btn-outline-success" type="submit">SUBMIT</button>
             </form>
         </div>
     </main>

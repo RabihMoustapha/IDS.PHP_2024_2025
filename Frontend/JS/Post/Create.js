@@ -1,11 +1,13 @@
 const title = document.getElementById("title");
 const description = document.getElementById("description");
-const post = "http://localhost/IDS/Backend/Post.php";
+const post = "http://localhost/IDS/Backend/Post/Create.php";
 
 async function Create() {
     const requestData = {
+        profileID: localStorage.getItem("profileID"),
         title: title.value,
         description: description.value,
+        profileName: localStorage.getItem("profileName")
     };
 
     try {
