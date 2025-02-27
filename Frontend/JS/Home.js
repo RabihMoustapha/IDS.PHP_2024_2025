@@ -1,5 +1,11 @@
 const container = document.getElementById("container");
-const post = "http://localhost/IDS/Backend/Post.php";
+const post = "http://localhost/IDS/Backend/Post/Get.php";
+
+function isLoggedIn() {
+    if (!localStorage.getItem("profileID")) {
+        window.location.href = "Login.php";
+    }
+}
 
 async function getData() {
     try {
@@ -10,7 +16,7 @@ async function getData() {
             },
         });
 
-        if (!response.ok) throw new Error("Login Failed");
+        if (!response.ok) throw new Error("Fetching data failed");
         const data = await response.json();
         console.log(data);
 
@@ -20,8 +26,7 @@ async function getData() {
             data.item.forEach(element => {
                 container.innerHTML += `
                     <div>
-                        <p>${element.email}</p>
-                        <img src="IMG/${element.img}" style="width: 40px; height: 40px">
+                        <p>${element.profileName}</p>
                         <p>${element.title}</p>
                         <p>${element.description}</p>
                         <img src="IMG/delete.png" style="width: 40px; height: 40px; cursor: pointer" onclick="Delete(${element.id})">
@@ -48,20 +53,23 @@ async function Delete(id) {
                 "Content-Type": "application/json",
             }, body: JSON.stringify(requestData),
         });
-        if (!response.ok) throw new Error("Login Failed");
+        if (!response.ok) throw new Error("Deleting failed");
         const data = await response.json();
         if (data.success) {
             alert("Deleted");
+            getData();
         } else {
             alert("Deleting error");
         }
     } catch (err) {
         console.error("Data error:", err);
-        alert("An error occurred during fetching.");
+        alert("An error occurred during deletion.");
     }
 }
 
 function Logout() {
-    localStorage.removeItem("userToken");
+    localStorage.clear();
     window.location.href = "Login.php";
 }
+
+document.addEventListener("DOMContentLoaded", getData);

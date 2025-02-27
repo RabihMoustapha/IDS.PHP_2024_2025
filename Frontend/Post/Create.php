@@ -16,17 +16,12 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../Home.html">WebApi</a>
+                <a class="navbar-brand" href="../Home.php">WebApi</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Home.html">
-                                <img src="../IMG/home.png" alt="Home" class="../IMG-fluid" style="width: 20px; height: 20px;">
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <button class="btn btn-outline-danger" onclick="Logout()">
                                 <img src="../IMG/logout.png" alt="Logout" class="../IMG-fluid" style="width: 20px; height: 20px;">
