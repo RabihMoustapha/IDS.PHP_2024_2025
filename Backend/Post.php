@@ -6,23 +6,23 @@ $input = json_decode(file_get_contents("php://input"), true);
 
 switch ($method) {
     case "GET":
-        handleGet($pdo);
+        Get($pdo);
         break;
     case "POST":
-        handlePost($pdo, $input);
+        Create($pdo, $input);
         break;
     case "PUT":
-        handlePut($pdo, $input);
+        Put($pdo, $input);
         break;
     case "DELETE":
-        handleDelete($pdo, $input);
+        Delete($pdo, $input);
         break;
     default:
         echo json_encode(["message" => "Invalid request method"]);
         break;
 }
 
-function handleGet($pdo)
+function Get($pdo)
 {
     $sql = "SELECT * FROM post";
     $stmt = $pdo->prepare($sql);
@@ -35,7 +35,7 @@ function handleGet($pdo)
     }
 }
 
-function handlePost($pdo, $input)
+function Create($pdo, $input)
 {
     try {
         $sql = "SELECT * FROM profile WHERE token = :userToken";
@@ -61,7 +61,7 @@ function handlePost($pdo, $input)
     }
 }
 
-function handlePut($pdo, $input)
+function Put($pdo, $input)
 {
     $sql = "UPDATE post SET name = :name, password = :password WHERE email = :email";
     $stmt = $pdo->prepare($sql);
@@ -77,7 +77,7 @@ function handlePut($pdo, $input)
     }
 }
 
-function handleDelete($pdo, $input)
+function Delete($pdo, $input)
 {
     $sql = "DELETE FROM post WHERE id = :id";
     $stmt = $pdo->prepare($sql);
