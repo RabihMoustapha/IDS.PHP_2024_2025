@@ -1,5 +1,4 @@
 const container = document.getElementById("container");
-const post = "http://localhost/IDS/Backend/Post/Get.php";
 
 function isLoggedIn() {
     if (!localStorage.getItem("profileID")) {
@@ -9,7 +8,8 @@ function isLoggedIn() {
 
 async function getData() {
     try {
-        const response = await fetch(post, {
+        const Get = "http://localhost/IDS/Backend/Post/Get.php";
+        const response = await fetch(Get, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -29,7 +29,6 @@ async function getData() {
                         <p>${element.profileName}</p>
                         <p>${element.title}</p>
                         <p>${element.description}</p>
-                        <img src="IMG/delete.png" style="width: 40px; height: 40px; cursor: pointer" onclick="Delete(${element.id})">
                     </div>
                 `;
             });
@@ -47,7 +46,8 @@ async function Delete(id) {
         id: id,
     };
     try {
-        const response = await fetch(post, {
+        const Delete = "http://localhost/IDS/Backend/Post/Delete.php";
+        const response = await fetch(Delete, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -71,5 +71,3 @@ function Logout() {
     localStorage.clear();
     window.location.href = "Login.php";
 }
-
-document.addEventListener("DOMContentLoaded", getData);
