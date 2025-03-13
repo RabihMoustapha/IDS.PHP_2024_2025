@@ -1,6 +1,6 @@
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const profile = "http://localhost/IDS/Backend/Profile.php";
+const profile = "http://localhost/IDS/Backend/Profile/Login.php";
 
 async function Login() {
     const requestData = {
