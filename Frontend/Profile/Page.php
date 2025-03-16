@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">WebApi</a>
@@ -34,7 +34,7 @@
         </nav>
     </header>
 
-    <div class="profile-container">
+    <div class="profile-container mb-4">
         <div class="profile-header">
             <img src="../IMG/profile.png" alt="Profile Picture">
             <h2 id="profileName">Profile Name</h2>
@@ -49,7 +49,7 @@
     <script type="text/javascript" src="../JS/Profile/Page.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <footer class="footer">
+    <footer class="footer mt-4">
         <div class="container">
             <p>&copy; 2025 WebApi. All rights reserved.</p>
             <ul class="list-inline">

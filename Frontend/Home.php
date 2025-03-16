@@ -13,7 +13,7 @@
 </head>
 
 <body onload="Get()">
-    <header>
+    <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">WebApi</a>
@@ -54,9 +54,9 @@
         </div>
     </main>
 
-    <div id="container" class="container"></div>
+    <div id="container" class="container mb-4"></div>
 
-    <footer class="footer bg-dark text-white text-center py-3">
+    <footer class="footer mt-4 bg-dark text-white text-center py-3">
         <div class="container">
             <p>&copy; 2025 WebApi. All rights reserved.</p>
             <ul class="list-inline">

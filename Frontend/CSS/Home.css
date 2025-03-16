@@ -6,6 +6,9 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -37,6 +40,7 @@ header {
 main {
     text-align: center;
     padding: 50px 0;
+    flex: 1;
 }
 
 main h1 {
@@ -82,13 +86,12 @@ header {
     cursor: pointer;
 }
 
-
 .footer {
     background-color: #343a40;
     color: #f8f9fa;
     text-align: center;
     padding: 15px 0;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -112,4 +115,17 @@ button:hover {
 .form-control:focus {
     border-color: #0056b3;
     box-shadow: 0 0 0 0.25rem rgba(0, 86, 179, 0.25);
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
 }
