@@ -36,8 +36,8 @@
     <main class="container py-5">
         <div class="form-floating">
             <form action="javascript:void(0)" method="post" onsubmit="Create()">
-                <input type="text" class="form-control" placeholder="Title" name="title" required>
-                <textarea class="form-control" placeholder="Content" name="content" rows="5" required></textarea>
+                <input type="text" class="form-control" placeholder="Title" id="title" name="title" required>
+                <textarea class="form-control" placeholder="Content" name="content" id="description" rows="5" required></textarea>
                 <button class="btn btn-outline-success" type="submit">SUBMIT</button>
             </form>
         </div>
@@ -56,7 +56,7 @@
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="JS/Post/Create.js"></script>
+    <script src="../JS/Post/Create.js"></script>
 </body>
 
 </html>

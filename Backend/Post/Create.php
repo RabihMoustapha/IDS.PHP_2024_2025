@@ -23,8 +23,8 @@ function Create($pdo, $input)
         $stmt->bindParam(":title", $input["title"]);
         $stmt->bindParam(":description", $input["description"]);
         $stmt->execute();
-        echo json_encode(["success" => true, "message" => "Post created successfully"]);
+        echo json_encode(array(["success" => true, "message" => "Post created successfully"]));
     } catch (PDOException $e) {
-        echo json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]);
+        echo json_encode(array(["success" => false, "message" => "Database error: " . $e->getMessage()]));
     }
 }

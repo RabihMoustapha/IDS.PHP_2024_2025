@@ -29,18 +29,16 @@
         </nav>
     </header>
 
-    <form action="javascript:void(0)" method="POST" onsubmit="ShowProfileDetails()" class="container mb-4">
+    <form action="javascript:void(0)" method="POST" onload="ShowProfileDetails()" class="container mb-4">
         <div class="profile-container mb-4 text-center">
             <div class="profile-header">
                 <img src="../IMG/profile.png" alt="Profile Picture">
                 <h2 id="profileName"></h2>
             </div>
         </div>
-        <form action="javascript:void(0)" method="POST" onsubmit="addPost()" class="container mb-4">
-            <div class="form-group">
-                <button class=" btn btn-primary mt-3">Add Post</button>
-            </div>
-        </form>
+        <div class="form-group">
+            <a href="../Post/Create.php">Add Post</a>
+        </div>
         </div>
     </form>
 

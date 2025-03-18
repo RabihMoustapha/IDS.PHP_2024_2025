@@ -1,7 +1,3 @@
-const title = document.getElementById("title");
-const description = document.getElementById("description");
-const post = "http://localhost/IDS/Backend/Post/Create.php";
-
 function isLoggedIn() {
     if (!localStorage.getItem("profileID")) {
         window.location.href = "../Login.php";
@@ -9,6 +5,10 @@ function isLoggedIn() {
 }
 
 async function Create() {
+    const title = document.getElementById("title");
+    const description = document.getElementById("description");
+    const postUrl = `http://localhost/IDS/Backend/Post/Create.php`;
+
     const requestData = {
         profileID: localStorage.getItem("profileID"),
         profileName: localStorage.getItem("profileName"),
@@ -17,7 +17,7 @@ async function Create() {
     };
 
     try {
-        const response = await fetch(post, {
+        const response = await fetch(postUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
