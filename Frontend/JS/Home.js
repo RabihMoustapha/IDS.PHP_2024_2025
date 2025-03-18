@@ -1,39 +1,46 @@
-const container = document.getElementById("container");
+const container = document.getElementById("posts-list");
+const search = document.getElementById("search-bar");
 
 function isLoggedIn() {
-    if (!localStorage.getItem("profileID")) {
-        window.location.href = "Login.php";
-    }
+    return localStorage.getItem("ProfileID");
 }
 
-async function Get() {
+if (!isLoggedIn()) {
+    window.location.href = "Profile/Login.html";
+}
+
+async function Search() {
+    const item = {
+        title: search.value
+    };
+
     try {
-        const Get = "http://localhost/IDS/Backend/Post/Get.php";
-        const response = await fetch(Get, {
-            method: "GET",
+        const response = await fetch("https://localhost:7136/api/Posts/Search", {
+            method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
             },
+            body: JSON.stringify(item)
         });
 
-        if (!response.ok) throw new Error("Fetching data failed");
+        if (!response.ok) throw new Error("Login Failed");
         const data = await response.json();
         console.log(data);
 
-        if (data.success && Array.isArray(data.item)) {
-            container.innerHTML += "";
-
-            data.item.forEach(element => {
+        if (Array.isArray(data)) {
+            container.innerHTML = "";
+            data.forEach(element => {
                 container.innerHTML += `
-                    <div>
-                        <p>${element.profileName}</p>
-                        <p>${element.title}</p>
-                        <p>${element.description}</p>
+                    <div class="post-card">
+                        <p class="profile-name">${element.profileName}</p>
+                        <h2 class="post-title">${element.title}</h2>
+                        <p class="post-description">${element.description}</p>
                     </div>
                 `;
             });
         } else {
-            alert("Data failed: " + (data.message || "Invalid data structure"));
+            alert("Data failed: Invalid data structure");
         }
     } catch (err) {
         console.error("Data error:", err);
@@ -41,70 +48,41 @@ async function Get() {
     }
 }
 
-async function Search() {
-    const apiUrl = "http://localhost/IDS/Backend/Post/Search.php";
-    const search = document.getElementById("searchQuery").value;
-    const requestData = {
-        search: search,
-    };
+async function Display() {
     try {
-        const response = await fetch(apiUrl, {
-            method: "POST",
+        const response = await fetch("https://localhost:7136/api/Posts", {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(requestData),
         });
-        if (!response.ok) throw new Error("Searching failed");
+
+        if (!response.ok) throw new Error("Login Failed");
         const data = await response.json();
         console.log(data);
-        if (data.success && Array.isArray(data.item)) {
+
+        if (Array.isArray(data)) {
             container.innerHTML = "";
-            data.item.forEach(element => {
+            data.forEach(element => {
                 container.innerHTML += `
-                    <div>
-                        <p>${element.profileName}</p>
-                        <p>${element.title}</p>
-                        <p>${element.description}</p>
+                    <div class="post-card">
+                        <p class="profile-name">${element.profileName}</p>
+                        <h2 class="post-title">${element.title}</h2>
+                        <p class="post-description">${element.description}</p>
                     </div>
                 `;
             });
         } else {
-            alert("Data failed: " + (data.message || "Invalid data structure"));
+            alert("Data failed: Invalid data structure");
         }
     } catch (err) {
         console.error("Data error:", err);
-        alert("An error occurred during searching.");
-    }
-}
-
-async function Delete(id) {
-    const requestData = {
-        id: id,
-    };
-    try {
-        const Delete = "http://localhost/IDS/Backend/Post/Delete.php";
-        const response = await fetch(Delete, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            }, body: JSON.stringify(requestData),
-        });
-        if (!response.ok) throw new Error("Deleting failed");
-        const data = await response.json();
-        if (data.success) {
-            alert("Deleted");
-            getData();
-        } else {
-            alert("Deleting error");
-        }
-    } catch (err) {
-        console.error("Data error:", err);
-        alert("An error occurred during deletion.");
+        alert("An error occurred during fetching.");
     }
 }
 
 function Logout() {
-    localStorage.clear();
-    window.location.href = "Login.php";
+    localStorage.removeItem("ProfileID");
+    localStorage.removeItem("ProfileName");
+    window.location.href = "Profile/Login.html";
 }

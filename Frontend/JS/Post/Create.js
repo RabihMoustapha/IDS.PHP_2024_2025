@@ -1,46 +1,31 @@
-function isLoggedIn() {
-    if (!localStorage.getItem("profileID")) {
-        window.location.href = "../Login.php";
-    }
-}
+const title = document.getElementById("title");
+const description = document.getElementById("description");
 
 async function Create() {
-    const title = document.getElementById("title");
-    const description = document.getElementById("description");
-    const postUrl = `http://localhost/IDS/Backend/Post/Create.php`;
-
-    const requestData = {
-        profileID: localStorage.getItem("profileID"),
-        profileName: localStorage.getItem("profileName"),
+    const post = {
+        profileID: localStorage.getItem("ProfileID"),
         title: title.value,
         description: description.value,
+        profileName: localStorage.getItem("ProfileName")
     };
 
     try {
-        const response = await fetch(postUrl, {
+        const response = await fetch("https://localhost:7136/api/Posts/Create", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-            }, body: JSON.stringify(requestData),
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(post)
         });
 
-        if (!response.ok) throw new Error("Login Failed");
-        const data = await response.json();
-        console.log(data);
-
-        if (data.success && Array.isArray(data.item)) {
-            alert("Data created");
-            window.location.href = "../Home.php";
+        if (response.ok) {
+            alert("Post created successfully!");
+            window.location.href = "View.html";
         } else {
-            alert("Data creation failed: " + (data.message || "Invalid data structure"));
+            throw new Error("Failed to create post.");
         }
-    } catch (err) {
-        console.error("Data error:", err);
-        alert("An error occurred during fetching.");
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error: " + error.message);
     }
-}
-
-function Logout() {
-    localStorage.clear();
-    window.location.href = "../Login.php";
 }

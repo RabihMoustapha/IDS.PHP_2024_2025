@@ -1,9 +1,11 @@
-const profile = "https://localhost:7136/api/Profiles/login";
+const profile = "https://localhost:7136/api/Profiles/Create";
 const email = document.getElementById("email");
 const password = document.getElementById("password");
+const username = document.getElementById("username");
 
-async function Login() {
-    const item = {
+async function Create() {
+    const userData = {
+        username: username.value,
         email: email.value,
         password: password.value
     };
@@ -12,23 +14,19 @@ async function Login() {
         const response = await fetch(profile, {
             method: "POST",
             headers: {
-                "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(item)
+            body: JSON.stringify(userData)
         });
 
         if (response.ok) {
             const result = await response.json();
-            alert("Login successful!");
-            localStorage.setItem("ProfileID", result.id);
-            localStorage.setItem("ProfileName", result.name);
+            alert("Signup successful!");
             window.location.href = "../Home.html";
         } else {
-            throw new Error("Login failed. Please try again.");
+            alert("Signup failed. Please try again.");
         }
     } catch (error) {
         console.error("Error:", error);
-        alert("Error: " + error.message);
     }
 }

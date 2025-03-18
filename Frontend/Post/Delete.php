@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Post</title>
+    <title>Delete Post</title>
     <link type="text/css" rel="stylesheet" href="../CSS/Post.css">
 </head>
 
@@ -13,21 +13,18 @@
         <nav>
             <ul>
                 <li><a href="../Home.html">Home</a></li>
+                <li><a href="Create.html">Create Post</a></li>
                 <li><a href="View.html">Your Posts</a></li>
                 <li><a href="#" onclick="Logout()">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="post-container">
-            <h2>Create Post</h2>
-            <form action="javascript:void(0)" method="post" onsubmit="Create()">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required>
-                <label for="description">Description</label>
-                <textarea id="description" name="description" required></textarea>
-                <input type="submit" value="Create Post">
-            </form>
+        <section class="delete-container">
+            <h2>Delete Post</h2>
+            <p>Are you sure you want to delete this post?</p>
+            <button onclick="DeletePost()">Delete</button>
+            <button class="cancel-button" onclick="Cancel()">Cancel</button>
         </section>
     </main>
     <footer>
@@ -39,7 +36,7 @@
             </ul>
         </nav>
     </footer>
-    <script type="text/javascript" src="../JS/Post/Create.js"></script>
+    <script type="text/javascript" src="../JS/Post/Delete.js"></script>
 </body>
 
 </html>

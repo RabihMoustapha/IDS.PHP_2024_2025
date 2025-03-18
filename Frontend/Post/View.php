@@ -4,30 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Post</title>
+    <title>View Posts</title>
     <link type="text/css" rel="stylesheet" href="../CSS/Post.css">
 </head>
 
-<body>
+<body onload="View()">
     <header>
         <nav>
             <ul>
                 <li><a href="../Home.html">Home</a></li>
-                <li><a href="View.html">Your Posts</a></li>
+                <li><a href="Create.html">Create Post</a></li>
                 <li><a href="#" onclick="Logout()">Logout</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <section class="post-container">
-            <h2>Create Post</h2>
-            <form action="javascript:void(0)" method="post" onsubmit="Create()">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required>
-                <label for="description">Description</label>
-                <textarea id="description" name="description" required></textarea>
-                <input type="submit" value="Create Post">
-            </form>
+            <div id="posts-list"></div>
         </section>
     </main>
     <footer>
@@ -39,7 +33,7 @@
             </ul>
         </nav>
     </footer>
-    <script type="text/javascript" src="../JS/Post/Create.js"></script>
+    <script type="text/javascript" src="../JS/Post/View.js"></script>
 </body>
 
 </html>
