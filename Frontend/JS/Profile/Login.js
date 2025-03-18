@@ -1,5 +1,4 @@
 async function Login() {
-    const profileURL = "http://localhost/Backend/Profile/Login.php";
     const email = document.getElementById("email");
     const password = document.getElementById("password");
 
@@ -9,7 +8,7 @@ async function Login() {
     };
 
     try {
-        const response = await fetch(profileURL, {
+        const response = await fetch(`http://localhost/Backend/Profile/Login.php`, {
             method: "POST",
             headers: {
                 "Accept": "application/json",

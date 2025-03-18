@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const profileID = localStorage.getItem("ProfileID");
-    if (!profileID) {
+    const ProfileID = localStorage.getItem("ProfileID");
+    if (!ProfileID) {
         alert("No profile ID found. Please log in.");
         window.location.href = "../Login.php";
         return;
     }
 
-    const profileUrl = `https://localhost:7136/api/Profiles/GetProfileByID/${profileID}`;
+    const profileUrl = `https://localhost:7136/api/Profiles/GetProfileByID/${ProfileID}`;
 
     try {
         const response = await fetch(profileUrl);

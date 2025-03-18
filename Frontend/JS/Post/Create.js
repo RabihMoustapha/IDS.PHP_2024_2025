@@ -3,7 +3,7 @@ const description = document.getElementById("description");
 
 async function Create() {
     const post = {
-        profileID: localStorage.getItem("ProfileID"),
+        ProfileID: localStorage.getItem("ProfileID"),
         title: title.value,
         description: description.value,
         profileName: localStorage.getItem("ProfileName")

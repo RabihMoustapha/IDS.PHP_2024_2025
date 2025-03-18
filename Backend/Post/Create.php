@@ -16,9 +16,9 @@ switch ($method) {
 function Create($pdo, $input)
 {
     try {
-        $sql = "INSERT INTO post (profileID, profileName, title, description) VALUES (:profileID, :profileName, :title, :description)";
+        $sql = "INSERT INTO post (ProfileID, profileName, title, description) VALUES (:ProfileID, :profileName, :title, :description)";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(":profileID", $input["profileID"]);
+        $stmt->bindParam(":ProfileID", $input["ProfileID"]);
         $stmt->bindParam(":profileName", $input["profileName"]);
         $stmt->bindParam(":title", $input["title"]);
         $stmt->bindParam(":description", $input["description"]);

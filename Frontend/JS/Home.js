@@ -1,7 +1,7 @@
 const container = document.getElementById("posts-list");
 
 function isLoggedIn() {
-    return localStorage.getItem("profileID");
+    return localStorage.getItem("ProfileID");
 }
 
 if (!isLoggedIn()) {
@@ -50,7 +50,7 @@ async function Search() {
 
 async function Display() {
     try {
-        const response = await fetch("https://localhost/Backend/Post/Get.php", {
+        const response = await fetch(`https://localhost/Backend/Post/Get.php`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
