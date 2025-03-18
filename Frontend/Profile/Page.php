@@ -16,16 +16,11 @@
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">WebApi</a>
+                <a class="navbar-brand" href="../Home.php">WebApi</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Home.php">Home</a>
-                        </li>
-                    </ul>
                     <button class="btn btn-outline-danger" onclick="Logout()">
                         <img src="../IMG/logout.png" alt="Logout" class="img-fluid" style="width: 20px; height: 20px;">
                     </button>
@@ -34,18 +29,22 @@
         </nav>
     </header>
 
-    <div class="profile-container mb-4">
-        <div class="profile-header">
-            <img src="../IMG/profile.png" alt="Profile Picture">
-            <h2 id="profileName">Profile Name</h2>
+    <form action="javascript:void(0)" method="POST" onsubmit="ShowProfileDetails()" class="container mb-4">
+        <div class="profile-container mb-4 text-center">
+            <div class="profile-header">
+                <img src="../IMG/profile.png" alt="Profile Picture">
+                <h2 id="profileName"></h2>
+            </div>
         </div>
-        <div class="profile-details" id="profileDetails">
-            <p>Name: <span id="profileName"></span></p>
-            <p>Password: <span id="profilePassword"></span></p>
+        <form action="javascript:void(0)" method="POST" onsubmit="addPost()" class="container mb-4">
+            <div class="form-group">
+                <button class=" btn btn-primary mt-3">Add Post</button>
+            </div>
+        </form>
         </div>
-    </div>
+    </form>
 
-    <!--Scripts-->
+    <!-- JS -->
     <script type="text/javascript" src="../JS/Profile/Page.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 

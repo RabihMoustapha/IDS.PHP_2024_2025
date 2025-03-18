@@ -13,7 +13,7 @@
 </head>
 
 <body onload="Get()">
-    <header class="mb-4">
+    <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">WebApi</a>
@@ -29,11 +29,11 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Profile/Page.php">
-                                <img src="IMG/profile.png" alt="Create Post" class="img-fluid" style="width: 20px; height: 20px;">
+                                <img src="IMG/profile.png" alt="Profile" class="img-fluid" style="width: 20px; height: 20px;">
                             </a>
                         </li>
                     </ul>
-                    <form class="d-flex w-100 me-3" action="javascript:void(0)" method="post" onsubmit="Search()">
+                    <form class="d-flex w-100 me-3" action="../Backend/search.php" method="post">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchQuery" id="searchQuery">
                         <button class="btn btn-outline-success" type="submit">
                             <img src="IMG/search.png" alt="Search" class="img-fluid" style="width: 20px; height: 20px;">
@@ -54,9 +54,9 @@
         </div>
     </main>
 
-    <div id="container" class="container mb-4"></div>
+    <div id="container" class="container"></div>
 
-    <footer class="footer mt-4 bg-dark text-white text-center py-3">
+    <footer class="footer bg-dark text-white text-center py-3">
         <div class="container">
             <p>&copy; 2025 WebApi. All rights reserved.</p>
             <ul class="list-inline">

@@ -41,64 +41,42 @@ async function Get() {
     }
 }
 
-async function fetchSearchResults() {
+async function Search() {
     const apiUrl = "http://localhost/IDS/Backend/Post/Search.php";
-
+    const search = document.getElementById("searchQuery").value;
+    const requestData = {
+        search: search,
+    };
     try {
         const response = await fetch(apiUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ "search": document.getElementById("searchQuery").value }),
+            body: JSON.stringify(requestData),
         });
-
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
+        if (!response.ok) throw new Error("Searching failed");
         const data = await response.json();
-        console.log("Fetched Data:", data);
-
+        console.log(data);
         if (data.success && Array.isArray(data.item)) {
-            renderSearchResults(data.item);
+            container.innerHTML = "";
+            data.item.forEach(element => {
+                container.innerHTML += `
+                    <div>
+                        <p>${element.profileName}</p>
+                        <p>${element.title}</p>
+                        <p>${element.description}</p>
+                    </div>
+                `;
+            });
         } else {
-            throw new Error(data.message || "Invalid response structure");
+            alert("Data failed: " + (data.message || "Invalid data structure"));
         }
-    } catch (error) {
-        console.error("Error fetching search results:", error);
-        alert("An error occurred while fetching data. Please try again.");
+    } catch (err) {
+        console.error("Data error:", err);
+        alert("An error occurred during searching.");
     }
 }
-
-function renderSearchResults(items) {
-    const container = document.getElementById("container"); // Ensure this exists
-    if (!container) {
-        console.error("Container element not found.");
-        return;
-    }
-
-    container.innerHTML = ""; // Clear existing content
-
-    items.forEach(({ profileName, title, description }) => {
-        const itemDiv = document.createElement("div");
-
-        const namePara = document.createElement("p");
-        namePara.textContent = profileName;
-
-        const titlePara = document.createElement("p");
-        titlePara.textContent = title;
-
-        const descPara = document.createElement("p");
-        descPara.textContent = description;
-
-        itemDiv.appendChild(namePara);
-        itemDiv.appendChild(titlePara);
-        itemDiv.appendChild(descPara);
-
-        container.appendChild(itemDiv);
-    });
-}
-
-fetchSearchResults();
 
 async function Delete(id) {
     const requestData = {

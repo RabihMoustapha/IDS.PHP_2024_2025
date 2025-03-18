@@ -1,29 +1,36 @@
-document.addEventListener("DOMContentLoaded", async function () {
-    const profileID = localStorage.getItem("profileID");
-    if (!profileID) {
-        alert("No profile ID found. Please log in.");
-        window.location.href = "../Login.html";
-        return;
+function isLoggedIn() {
+    if (!localStorage.getItem("profileID")) {
+        window.location.href = "../Login.php";
     }
+}
 
-    const profileUrl = `http://localhost/IDS/Backend/Profile/GetByID.php?ID=${profileID}`;
+async function ShowProfileDetails() {
+    const profileUrl = `http://localhost/IDS/Backend/Profile/GetByID.php`;
+
+    const requestData = {
+        id: profileID,
+    };
 
     try {
-        const response = await fetch(profileUrl);
-        if (response.ok) {
-            const profile = await response.json();
-            document.getElementById("profileName").textContent = profile.name;
-            document.getElementById("profilePassword").textContent = profile.password;
-        } else {
-            throw new Error("Failed to fetch profile details.");
-        }
+        const response = await fetch(profileUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestData),
+        });
+        if (!response.ok) throw new Error("Failed to fetch profile details");
+        const profile = await response.json();
+        document.getElementById("profileName").textContent = profile.name;
+
     } catch (error) {
         console.error("Error:", error);
-        alert("Error: " + error.message);
+        alert("Error fetching profile details. Please try again.");
     }
-});
+}
+
 
 function Logout() {
     localStorage.removeItem("profileID");
-    window.location.href = "../Login.html";
+    window.location.href = "../Login.php";
 }

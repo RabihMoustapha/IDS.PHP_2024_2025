@@ -15,19 +15,15 @@ switch ($method) {
 
 function Search($pdo, $input)
 {
-    try {
-        $search = "%" . $input["searchQuery"] . "%";
+        $search = "%" . $input["search"] . "%";
         $sql = "SELECT * FROM post WHERE title LIKE :search OR description LIKE :search";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":search", $search);
         $stmt->execute();
         $result = $stmt->fetchAll();
         if($result) {
-            echo json_encode(["success" => true, "message" => "Post searched successfully", "item" => $result]);
+            echo json_encode(array(["success" => true, "message" => "Post searched successfully", "item" => $result]));
         } else {
-            echo json_encode(["success" => false, "message" => "No post found"]);
+            echo json_encode(array(["success" => false, "message" => "No post found"]));
         }
-    } catch (PDOException $e) {
-        echo json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]);
-    }
 }

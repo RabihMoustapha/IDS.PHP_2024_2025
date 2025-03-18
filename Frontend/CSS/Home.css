@@ -6,9 +6,6 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 header {
@@ -40,7 +37,6 @@ header {
 main {
     text-align: center;
     padding: 50px 0;
-    flex: 1;
 }
 
 main h1 {
@@ -91,7 +87,7 @@ header {
     color: #f8f9fa;
     text-align: center;
     padding: 15px 0;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
