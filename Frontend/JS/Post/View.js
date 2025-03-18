@@ -2,7 +2,7 @@ const postsList = document.getElementById("posts-list");
 
 async function View() {
     try {
-        const response = await fetch("https://localhost:7136/api/Posts");
+        const response = await fetch("http://localhost:7136/api/Posts");
         if (response.ok) {
             const posts = await response.json();
             posts.forEach(post => {

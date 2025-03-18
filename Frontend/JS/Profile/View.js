@@ -1,12 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const ProfileID = localStorage.getItem("ProfileID");
-    if (!ProfileID) {
-        alert("No profile ID found. Please log in.");
-        window.location.href = "../Login.php";
-        return;
-    }
 
-    const profileUrl = `https://localhost:7136/api/Profiles/GetProfileByID/${ProfileID}`;
+    const profileUrl = `http://localhost:7136/api/Profiles/GetProfileByID/${ProfileID}`;
 
     try {
         const response = await fetch(profileUrl);

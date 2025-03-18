@@ -1,6 +1,6 @@
 async function updatePost(endpoint, data) {
     try {
-        const response = await fetch(`https://localhost:7136/api/Posts/${endpoint}?ID=${GetID()}`, {
+        const response = await fetch(`http://localhost:7136/api/Posts/${endpoint}?ID=${GetID()}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

@@ -2,7 +2,7 @@ async function DeletePost() {
     const postId = GetID();
 
     try {
-        const response = await fetch(`https://localhost:7136/api/Posts/Delete?ID=${postId}`, {
+        const response = await fetch(`http://localhost:7136/api/Posts/Delete?ID=${postId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

@@ -6,20 +6,19 @@ $input = json_decode(file_get_contents("php://input"), true);
 
 switch ($method) {
     case "UPDATE":
-        Update($pdo, $input);
+        UpdatePassword($pdo, $input);
         break;
     default:
         echo json_encode(["message" => "Invalid request method"]);
         break;
 }
 
-function Update($pdo, $input)
+function UpdatePassword($pdo, $input)
 {
-    $sql = "UPDATE profile SET name = :name, password = :password WHERE email = :email";
+    $sql = "UPDATE profile SET password = :password WHERE email = :email";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(":name", $input["name"]);
-    $stmt->bindParam(":email", $input["email"]);
     $stmt->bindParam(":password", $input["password"]);
+    $stmt->bindParam(":email", $input["email"]);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result) {

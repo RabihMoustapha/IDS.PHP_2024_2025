@@ -10,7 +10,7 @@ async function Create() {
     };
 
     try {
-        const response = await fetch("https://localhost:7136/api/Posts/Create", {
+        const response = await fetch("http://localhost:7136/api/Posts/Create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

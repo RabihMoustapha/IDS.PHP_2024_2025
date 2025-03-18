@@ -1,19 +1,14 @@
-const ProfileID = localStorage.getItem("ProfileID");
 const profileURL = `http://localhost/Backend/Profile/GetByID.php`;
-
-if (!ProfileID) {
-    alert("No profile ID found. Please log in.");
-    window.location.href = "../Login.php";
-}
 
 async function UpdateName() {
     const Name = document.getElementById("name").value;
     const request = {
+        id: localStorage.getItem("ProfileID"),
         name: Name
     };
 
     try {
-        const nameResponse = await fetch(`https://localhost:7136/api/Profiles/UpdateName?ID=${ProfileID}`, {
+        const nameResponse = await fetch(`http://localhost:7136/api/Profiles/UpdateName.php`, {
             method: "PUT",
             headers: {
                 "Accept": "application/json",
@@ -36,14 +31,18 @@ async function UpdateName() {
 
 async function UpdatePassword() {
     const Password = document.getElementById("password").value;
+    const request = {
+        id: localStorage.getItem("ProfileID"),
+        password: Password
+    };
     try {
-        const nameResponse = await fetch(`https://localhost:7136/api/Profiles/UpdatePassword?ID=${ProfileID}`, {
+        const nameResponse = await fetch(`http://localhost/Backend/Profile/UpdatePassword.php`, {
             method: "PUT",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ password: Password })
+            body: JSON.stringify(request)
         });
 
         if (!nameResponse.ok) {

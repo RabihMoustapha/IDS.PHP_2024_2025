@@ -1,4 +1,3 @@
-const profile = "https://localhost:7136/api/Profiles/Create";
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const username = document.getElementById("username");
@@ -11,7 +10,7 @@ async function Create() {
     };
 
     try {
-        const response = await fetch(profile, {
+        const response = await fetch(`http://localhost/Backend/Profile/Create.php`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
