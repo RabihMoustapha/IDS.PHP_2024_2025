@@ -1,15 +1,15 @@
-const profile = "https://localhost:7136/api/Profiles/login";
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-
 async function Login() {
+    const profileURL = "http://localhost/Backend/Profile/Login.php";
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
     const item = {
         email: email.value,
         password: password.value
     };
 
     try {
-        const response = await fetch(profile, {
+        const response = await fetch(profileURL, {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -23,7 +23,7 @@ async function Login() {
             alert("Login successful!");
             localStorage.setItem("ProfileID", result.id);
             localStorage.setItem("ProfileName", result.name);
-            window.location.href = "../Home.html";
+            window.location.href = "../home.php";
         } else {
             throw new Error("Login failed. Please try again.");
         }

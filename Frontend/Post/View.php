@@ -12,8 +12,8 @@
     <header>
         <nav>
             <ul>
-                <li><a href="../Home.html">Home</a></li>
-                <li><a href="Create.html">Create Post</a></li>
+                <li><a href="../Home.php">Home</a></li>
+                <li><a href="Create.php">Create Post</a></li>
                 <li><a href="#" onclick="Logout()">Logout</a></li>
             </ul>
         </nav>
@@ -28,8 +28,8 @@
         <p>&copy; 2025 Community Knowledge Sharing Platform</p>
         <nav>
             <ul>
-                <li><a href="../About.html">About</a></li>
-                <li><a href="../Contact.html">Contact</a></li>
+                <li><a href="../About.php">About</a></li>
+                <li><a href="../Contact.php">Contact</a></li>
             </ul>
         </nav>
     </footer>

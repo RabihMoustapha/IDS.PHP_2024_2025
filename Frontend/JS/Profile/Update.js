@@ -3,7 +3,7 @@ const profileURL = `https://localhost:7136/api/Profiles/GetProfileByID/${profile
 
 if (!profileID) {
     alert("No profile ID found. Please log in.");
-    window.location.href = "../Login.html";
+    window.location.href = "../Login.php";
 }
 
 async function UpdateName() {
@@ -23,7 +23,7 @@ async function UpdateName() {
         }
 
         alert("Profile name updated successfully!");
-        window.location.href = "../View.html";
+        window.location.href = "../View.php";
     } catch (error) {
         console.error("Error:", error);
         alert("Error: " + error.message);
@@ -47,7 +47,7 @@ async function UpdatePassword() {
         }
 
         alert("Profile password updated successfully!");
-        window.location.href = "../View.html";
+        window.location.href = "../View.php";
     } catch (error) {
         console.error("Error:", error);
         alert("Error: " + error.message);

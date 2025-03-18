@@ -11,7 +11,7 @@ async function DeletePost() {
 
         if (response.ok) {
             alert("Post deleted successfully!");
-            window.location.href = "View.html";
+            window.location.href = "View.php";
         } else {
             throw new Error("Failed to delete post.");
         }
@@ -22,7 +22,7 @@ async function DeletePost() {
 }
 
 function Cancel() {
-    window.location.href = "View.html";
+    window.location.href = "View.php";
 }
 
 function GetID() {

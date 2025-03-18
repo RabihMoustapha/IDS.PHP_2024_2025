@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const profileID = localStorage.getItem("ProfileID");
     if (!profileID) {
         alert("No profile ID found. Please log in.");
-        window.location.href = "../Login.html";
+        window.location.href = "../Login.php";
         return;
     }
 
@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.getElementById("edit-profile").addEventListener("click", function () {
         const location = prompt("Enter your update location: Name or Password");
         if (location === "Name") {
-            window.location.href="Update/Name.html";
+            window.location.href="Update/Name.php";
         } else if (location === "Password") {
-            window.location.href="Update/Password.html";
+            window.location.href="Update/Password.php";
         } else {
             alert("Invalid location");
         }
@@ -36,5 +36,5 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 function logout() {
     localStorage.removeItem("ProfileID");
-    window.location.href = "../Login.html";
+    window.location.href = "../Login.php";
 }

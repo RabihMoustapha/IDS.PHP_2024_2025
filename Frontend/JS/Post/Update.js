@@ -9,7 +9,7 @@ async function updatePost(endpoint, data) {
         });
 
         if (response.ok) {
-            window.location.href = "../View.html";
+            window.location.href = "../View.php";
         } else {
             throw new Error(`Failed to update ${endpoint}.`);
         }

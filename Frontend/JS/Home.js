@@ -1,21 +1,21 @@
 const container = document.getElementById("posts-list");
-const search = document.getElementById("search-bar");
 
 function isLoggedIn() {
-    return localStorage.getItem("ProfileID");
+    return localStorage.getItem("profileID");
 }
 
 if (!isLoggedIn()) {
-    window.location.href = "Profile/Login.html";
+    window.location.href = "Profile/Login.php";
 }
 
 async function Search() {
+    const search = document.getElementById("search-bar");
     const item = {
         title: search.value
     };
 
     try {
-        const response = await fetch("https://localhost:7136/api/Posts/Search", {
+        const response = await fetch(`http://localhost/Backend/Post/Search.php`, {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -50,7 +50,7 @@ async function Search() {
 
 async function Display() {
     try {
-        const response = await fetch("https://localhost:7136/api/Posts", {
+        const response = await fetch("https://localhost/Backend/Post/Get.php", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -82,7 +82,6 @@ async function Display() {
 }
 
 function Logout() {
-    localStorage.removeItem("ProfileID");
-    localStorage.removeItem("ProfileName");
-    window.location.href = "Profile/Login.html";
+    localStorage.clear();
+    window.location.href = "Profile/Login.php";
 }

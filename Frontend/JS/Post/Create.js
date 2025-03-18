@@ -20,7 +20,7 @@ async function Create() {
 
         if (response.ok) {
             alert("Post created successfully!");
-            window.location.href = "View.html";
+            window.location.href = "View.php";
         } else {
             throw new Error("Failed to create post.");
         }

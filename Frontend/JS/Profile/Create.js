@@ -22,7 +22,7 @@ async function Create() {
         if (response.ok) {
             const result = await response.json();
             alert("Signup successful!");
-            window.location.href = "../Home.html";
+            window.location.href = "../Home.php";
         } else {
             alert("Signup failed. Please try again.");
         }

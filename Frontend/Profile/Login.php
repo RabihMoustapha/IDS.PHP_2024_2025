@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,15 +18,15 @@
                 <input type="password" id="password" name="password" required>
                 <input type="submit" value="Login">
             </form>
-            <a href="Create.html">If you dont have an account! Create one</a>
+            <a href="Create.php">If you dont have an account! Create one</a>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Community Knowledge Sharing Platform</p>
         <nav>
             <ul>
-                <li><a href="../About.html">About</a></li>
-                <li><a href="../Contact.html">Contact</a></li>
+                <li><a href="../About.php">About</a></li>
+                <li><a href="../Contact.php">Contact</a></li>
             </ul>
         </nav>
     </footer>
