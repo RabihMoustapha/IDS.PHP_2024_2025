@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Posts</title>
-    <link type="text/css" rel="stylesheet" href="../CSS/Post.css">
+    <link rel="stylesheet" href="../CSS/Post.css">
 </head>
 
-<body onload="View()">
+<body>
     <header>
         <nav>
             <ul>
@@ -24,6 +24,7 @@
             <div id="posts-list"></div>
         </section>
     </main>
+
     <footer>
         <p>&copy; 2025 Community Knowledge Sharing Platform</p>
         <nav>
@@ -33,7 +34,8 @@
             </ul>
         </nav>
     </footer>
-    <script type="text/javascript" src="../JS/Post/View.js"></script>
+    <script src="../JS/Post/View.js"></script>
+
 </body>
 
 </html>

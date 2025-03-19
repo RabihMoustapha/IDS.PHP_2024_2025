@@ -5,7 +5,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 $input = json_decode(file_get_contents("php://input"), true);
 
 switch ($method) {
-    case "UPDATE":
+    case "PUT":
         UpdatePassword($pdo, $input);
         break;
     default:

@@ -2,12 +2,10 @@ const container = document.getElementById("posts-list");
 
 async function Search() {
     const search = document.getElementById("search-bar");
-    const item = {
-        title: search.value
-    };
+    const item = { title: search.value };
 
     try {
-        const response = await fetch(`http://localhost/Backend/Post/Search.php`, {
+        const response = await fetch("http://localhost/Backend/Post/Search.php", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -16,7 +14,8 @@ async function Search() {
             body: JSON.stringify(item)
         });
 
-        if (!response.ok) throw new Error("Login Failed");
+        if (!response.ok) throw new Error("Failed to fetch search results");
+
         const data = await response.json();
         console.log(data);
 
@@ -32,30 +31,31 @@ async function Search() {
                 `;
             });
         } else {
-            alert("Data failed: Invalid data structure");
+            alert("Error: Invalid response format.");
         }
     } catch (err) {
-        console.error("Data error:", err);
-        alert("An error occurred during fetching.");
+        console.error("Search Error:", err);
+        alert("An error occurred while searching for posts.");
     }
 }
 
 async function Display() {
     try {
-        const response = await fetch(`http://localhost/Backend/Post/Get.php`, {
+        const response = await fetch("http://localhost/Backend/Post/Get.php", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },
         });
 
-        if (!response.ok) throw new Error("Login Failed");
+        if (!response.ok) throw new Error("Failed to fetch posts");
+
         const data = await response.json();
         console.log(data);
 
-        if (Array.isArray(data)) {
+        if (data.success && Array.isArray(data)) {
             container.innerHTML = "";
-            data.forEach(element => {
+            data.item.forEach(element => {
                 container.innerHTML += `
                     <div class="post-card">
                         <p class="profile-name">${element.profileName}</p>
@@ -65,11 +65,11 @@ async function Display() {
                 `;
             });
         } else {
-            alert("Data failed: Invalid data structure");
+            alert("Error: Invalid response format.");
         }
     } catch (err) {
-        console.error("Data error:", err);
-        alert("An error occurred during fetching.");
+        console.error("Display Error:", err);
+        alert("An error occurred while fetching posts.");
     }
 }
 

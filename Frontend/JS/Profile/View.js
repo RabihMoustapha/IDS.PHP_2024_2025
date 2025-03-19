@@ -1,9 +1,17 @@
-document.addEventListener("DOMContentLoaded", async function () {
-
-    const profileUrl = `http://localhost:7136/api/Profiles/GetProfileByID/${ProfileID}`;
+async function View() {
+    const item = {
+        id: localStorage.getItem("ProfileID")
+    };
 
     try {
-        const response = await fetch(profileUrl);
+        const response = await fetch(`http://localhost/Backend/GetByID.php`,{
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(item)
+    });
         if (response.ok) {
             const profile = await response.json();
             document.getElementById("profile-name").textContent = profile.name;
@@ -15,20 +23,20 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Error:", error);
         alert("Error: " + error.message);
     }
+}
 
-    document.getElementById("edit-profile").addEventListener("click", function () {
-        const location = prompt("Enter your update location: Name or Password");
-        if (location === "Name") {
-            window.location.href="Update/Name.php";
-        } else if (location === "Password") {
-            window.location.href="Update/Password.php";
-        } else {
-            alert("Invalid location");
-        }
-    });
+document.getElementById("edit-profile").addEventListener("click", function () {
+    const location = prompt("Enter your update location: Name or Password");
+    if (location === "Name") {
+        window.location.href = "Update/Name.php";
+    } else if (location === "Password") {
+        window.location.href = "Update/Password.php";
+    } else {
+        alert("Invalid location");
+    }
 });
 
-function logout() {
+function Logout() {
     localStorage.removeItem("ProfileID");
     window.location.href = "../Login.php";
 }
