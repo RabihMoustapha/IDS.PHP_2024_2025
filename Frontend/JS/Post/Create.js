@@ -1,21 +1,22 @@
-const title = document.getElementById("title");
-const description = document.getElementById("description");
-
 async function Create() {
-    const post = {
-        ProfileID: localStorage.getItem("ProfileID"),
-        title: title.value,
-        description: description.value,
-        profileName: localStorage.getItem("ProfileName")
-    };
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const imageInput = document.getElementById("image");
+
+    const formData = new FormData();
+    formData.append("ProfileID", localStorage.getItem("ProfileID"));
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("profileName", localStorage.getItem("ProfileName"));
+    
+    /* if (imageInput.files.length > 0) {
+         formData.append("image", imageInput.files[0]);
+     }*/
 
     try {
-        const response = await fetch("http://localhost:7136/api/Posts/Create", {
+        const response = await fetch(`http://localhost/Backend/Post/Create.php`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(post)
+            body: formData,
         });
 
         if (response.ok) {
