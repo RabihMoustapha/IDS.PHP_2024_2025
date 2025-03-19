@@ -5,7 +5,7 @@ async function Search() {
     const item = { title: search.value };
 
     try {
-        const response = await fetch("http://localhost/Backend/Post/Search.php", {
+        const response = await fetch("http://localhost/IDS/Backend/Post/Search.php", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -41,7 +41,7 @@ async function Search() {
 
 async function Display() {
     try {
-        const response = await fetch("http://localhost/Backend/Post/Get.php", {
+        const response = await fetch("http://localhost/IDS/Backend/Post/Get.php", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

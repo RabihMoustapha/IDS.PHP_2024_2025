@@ -25,3 +25,4 @@ function Get($pdo)
         echo json_encode(array("success" => false, "message" => "No data found."));
     }
 }
+?>

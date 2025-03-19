@@ -1,4 +1,4 @@
-const profileURL = `http://localhost/Backend/Profile/GetByID.php`;
+const profileURL = `http://localhost/IDS/Backend/Profile/GetByID.php`;
 
 async function UpdateName() {
     const Name = document.getElementById("name").value;
@@ -36,7 +36,7 @@ async function UpdatePassword() {
         password: Password
     };
     try {
-        const nameResponse = await fetch(`http://localhost/Backend/Profile/UpdatePassword.php`, {
+        const nameResponse = await fetch(`http://localhost/IDS/Backend/Profile/UpdatePassword.php`, {
             method: "PUT",
             headers: {
                 "Accept": "application/json",

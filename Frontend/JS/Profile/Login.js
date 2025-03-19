@@ -8,7 +8,7 @@ async function Login() {
     };
 
     try {
-        const response = await fetch(`http://localhost/Backend/Profile/Login.php`, {
+        const response = await fetch(`http://localhost/IDS/Backend/Profile/Login.php`, {
             method: "POST",
             headers: {
                 "Accept": "application/json",

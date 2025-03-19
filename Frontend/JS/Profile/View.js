@@ -4,7 +4,7 @@ async function View() {
     };
 
     try {
-        const response = await fetch(`http://localhost/Backend/GetByID.php`,{
+        const response = await fetch(`http://localhost/IDS/Backend/GetByID.php`,{
         method: "POST",
         headers: {
             "Accept": "application/json",

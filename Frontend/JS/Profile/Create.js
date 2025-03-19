@@ -10,7 +10,7 @@ async function Create() {
     };
 
     try {
-        const response = await fetch(`http://localhost/Backend/Profile/Create.php`, {
+        const response = await fetch(`http://localhost/IDS/Backend/Profile/Create.php`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

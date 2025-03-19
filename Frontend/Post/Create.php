@@ -26,8 +26,8 @@
                 <input type="text" id="title" name="title" required>
                 <label for="description">Description</label>
                 <textarea id="description" name="description" required></textarea>
-                <label for="image">Image</label>
-                <input type="file" id="image" accept="image/*" required>
+                <label for="image" class="image-label">Upload Image</label>
+                <input type="file" id="image" accept="image/*" class="image-input-label" required>
                 <input type="submit" value="Create Post">
             </form>
         </section>
