@@ -11,10 +11,12 @@ async function View() {
                 postItem.innerHTML = `
                     <h3>${post.title}</h3>
                     <p>${post.description}</p>
+                    <img src="uploads/${post.image}" alt="Post Image" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
                     <a href="Update/Title.php?id=${post.id}"><img class="icons" src="title.png" alt="Edit Title"></a>
                     <a href="Update/Description.php?id=${post.id}"><img class="icons" src="description.png" alt="Edit Description"></a>
                     <a href="Delete.php?id=${post.id}"><img class="icons" src="delete.png" alt="Delete"></a>
                 `;
+
                 postsList.appendChild(postItem);
             });
         } else {
