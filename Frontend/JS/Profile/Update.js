@@ -1,5 +1,3 @@
-const profileURL = `http://localhost/IDS/Backend/Profile/GetByID.php`;
-
 async function UpdateName() {
     const Name = document.getElementById("name").value;
     const request = {
@@ -8,7 +6,7 @@ async function UpdateName() {
     };
 
     try {
-        const nameResponse = await fetch(`http://localhost:7136/api/Profiles/UpdateName.php`, {
+        const nameResponse = await fetch(`http://localhost/IDS/Backend/Profile/Update/Name.php`, {
             method: "PUT",
             headers: {
                 "Accept": "application/json",
@@ -36,7 +34,7 @@ async function UpdatePassword() {
         password: Password
     };
     try {
-        const nameResponse = await fetch(`http://localhost/IDS/Backend/Profile/UpdatePassword.php`, {
+        const nameResponse = await fetch(`http://localhost/IDS/Backend/Profile/Update/Password.php`, {
             method: "PUT",
             headers: {
                 "Accept": "application/json",
