@@ -2,7 +2,7 @@ const postsList = document.getElementById("posts-list");
 
 async function View() {
     try {
-        const response = await fetch(`http://localhost/IDS/Backend/Post/GetByID`);
+        const response = await fetch(`http://localhost/IDS/Backend/Post/GetByID.php`);
         if (response.ok) {
             const posts = await response.json();
             posts.forEach(post => {

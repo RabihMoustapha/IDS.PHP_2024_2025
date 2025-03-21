@@ -53,7 +53,7 @@ async function Display() {
         const data = await response.json();
         console.log(data);
 
-        if (data.success && Array.isArray(data)) {
+        if (data.success) {
             container.innerHTML = "";
             data.item.forEach(element => {
                 container.innerHTML += `

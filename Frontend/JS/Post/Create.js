@@ -7,7 +7,11 @@ async function Create() {
     formData.append("ProfileID", localStorage.getItem("ProfileID"));
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("image", imageInput.files[0]);
+    
+    if (imageInput.files.length > 0) {
+        formData.append("image", imageInput.files[0]);
+    }
+    
     formData.append("profileName", localStorage.getItem("ProfileName"));
 
     try {
@@ -16,12 +20,14 @@ async function Create() {
             body: formData,
         });
 
-        if (response.ok) {
-            alert("Post created successfully!");
-            window.location.href = "View.php";
-        } else {
-            throw new Error("Failed to create post.");
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || "Failed to create post.");
         }
+
+        alert("Post created successfully!");
+        window.location.href = "View.php";
+
     } catch (error) {
         console.error("Error:", error);
         alert("Error: " + error.message);
