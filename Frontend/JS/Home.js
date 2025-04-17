@@ -73,6 +73,15 @@ async function Display() {
     }
 }
 
+function isLoggedIn() {
+    return localStorage.getItem("ProfileID") !== null;
+}
+
+if(!isLoggedIn()) {
+    alert("You are not logged in. Redirecting to login page.");
+    window.location.href = "../Login.php";
+}
+
 function Logout() {
     localStorage.clear();
     window.location.href = "Profile/Login.php";

@@ -31,3 +31,12 @@ function GetID() {
     const id = params.get("id");
     return id;
 }
+
+function isLoggedIn() {
+    return localStorage.getItem("ProfileID") !== null;
+}
+
+if(!isLoggedIn()) {
+    alert("You are not logged in. Redirecting to login page.");
+    window.location.href = "../Login.php";
+}

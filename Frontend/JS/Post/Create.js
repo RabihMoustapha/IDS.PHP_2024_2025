@@ -33,3 +33,12 @@ async function Create() {
         alert("Error: " + error.message);
     }
 }
+
+function isLoggedIn() {
+    return localStorage.getItem("ProfileID") !== null;
+}
+
+if(!isLoggedIn()) {
+    alert("You are not logged in. Redirecting to login page.");
+    window.location.href = "../Login.php";
+}

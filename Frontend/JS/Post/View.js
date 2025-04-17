@@ -28,6 +28,15 @@ async function View() {
     }
 }
 
+function isLoggedIn() {
+    return localStorage.getItem("ProfileID") !== null;
+}
+
+if(!isLoggedIn()) {
+    alert("You are not logged in. Redirecting to login page.");
+    window.location.href = "../Login.php";
+}
+
 function Logout() {
     localStorage.removeItem("ProfileID");
     window.location.href = "../Profile/Login.php";

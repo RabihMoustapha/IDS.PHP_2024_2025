@@ -4,14 +4,15 @@ async function View() {
     };
 
     try {
-        const response = await fetch(`http://localhost/IDS/Backend/Profile/GetByID.php`,{
-        method: "POST",
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(item)
-    });
+        const response = await fetch(`http://localhost/IDS/Backend/Profile/GetByID.php`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(item)
+        });
+
         if (response.ok) {
             const profile = await response.json();
             document.getElementById("profile-name").textContent = profile.name;
@@ -27,14 +28,23 @@ async function View() {
 
 document.getElementById("edit-profile").addEventListener("click", function () {
     const location = prompt("Enter your update location: Name or Password");
-    if (location === "Name") {
+    if (location.toLowerCase() === "name") {
         window.location.href = "Update/Name.php";
-    } else if (location === "Password") {
+    } else if (location.toLowerCase() === "password") {
         window.location.href = "Update/Password.php";
     } else {
         alert("Invalid location");
     }
 });
+
+function isLoggedIn() {
+    return localStorage.getItem("ProfileID") !== null;
+}
+
+if(!isLoggedIn()) {
+    alert("You are not logged in. Redirecting to login page.");
+    window.location.href = "../Login.php";
+}
 
 function Logout() {
     localStorage.removeItem("ProfileID");
