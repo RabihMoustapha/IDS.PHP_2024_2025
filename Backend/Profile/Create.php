@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-include "../idsDB.php";
+include "../db.php";
 $method = $_SERVER["REQUEST_METHOD"];
 $input = json_decode(file_get_contents("php://input"), true);
 
@@ -22,8 +22,8 @@ function Create($pdo, $input)
         $stmt->bindParam(":email", $input["email"]);
         $stmt->bindParam(":password", $input["password"]);
         $stmt->execute();
-        echo json_encode(array(["success" => true, "message" => "Profile created successfully"]));
+        echo json_encode(["success" => true, "message" => "Profile created successfully"]);
     } catch (PDOException $e) {
-        echo json_encode(array(["success" => false, "message" => "Database error: " . $e->getMessage()]));
+        echo json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]);
     }
 }

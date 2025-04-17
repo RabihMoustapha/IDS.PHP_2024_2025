@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-include "../idsDB.php";
+include "../db.php";
 $method = $_SERVER["REQUEST_METHOD"];
 $input = json_decode(file_get_contents("php://input"), true);
 
@@ -20,7 +20,7 @@ function Get($pdo)
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if ($result) {
-        echo json_encode(array("success" => true, "item" => $result));
+        echo json_encode(["success" => true] + $result);
     } else {
         echo json_encode(array("success" => false, "message" => "No data found."));
     }

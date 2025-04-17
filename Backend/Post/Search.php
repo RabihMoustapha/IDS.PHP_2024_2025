@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-include "../idsDB.php";
+include "../db.php";
 $method = $_SERVER["REQUEST_METHOD"];
 $input = json_decode(file_get_contents("php://input"), true);
 
@@ -22,8 +22,8 @@ function Search($pdo, $input)
         $stmt->execute();
         $result = $stmt->fetchAll();
         if($result) {
-            echo json_encode(array(["success" => true, "message" => "Post searched successfully", "item" => $result]));
+            echo json_encode(["success" => true, "message" => "Post searched successfully"] + $result);
         } else {
-            echo json_encode(array(["success" => false, "message" => "No post found"]));
+            echo json_encode(["success" => false, "message" => "No post found"]);
         }
 }

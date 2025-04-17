@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-include "../idsDB.php";
+include "../db.php";
 $method = $_SERVER["REQUEST_METHOD"];
 $input = json_decode(file_get_contents("php://input"), true);
 
@@ -22,7 +22,7 @@ function Login($pdo, $input)
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result) {
-        echo json_encode(["success" => true, "message" => "Login successful", "item" => $result]);
+        echo json_encode(["success" => true, "message" => "Login successful"] + $result);
     } else {
         echo json_encode(["success" => false, "message" => "Invalid email or password"]);
     }
