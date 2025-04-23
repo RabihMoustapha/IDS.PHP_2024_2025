@@ -38,5 +38,5 @@ function isLoggedIn() {
 
 if(!isLoggedIn()) {
     alert("You are not logged in. Redirecting to login page.");
-    window.location.href = "../Login.php";
+    window.location.href = "../Profile/Login.php";
 }

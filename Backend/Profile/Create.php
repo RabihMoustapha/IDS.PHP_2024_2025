@@ -22,7 +22,12 @@ function Create($pdo, $input)
         $stmt->bindParam(":email", $input["email"]);
         $stmt->bindParam(":password", $input["password"]);
         $stmt->execute();
-        echo json_encode(["success" => true, "message" => "Profile created successfully"]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($result) {
+            echo json_encode(["success" => true, "message" => "Profile created successfully"] + $result);
+        } else {
+            echo json_encode(["success" => false, "message" => "Profile creation failed"]);
+        }
     } catch (PDOException $e) {
         echo json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]);
     }

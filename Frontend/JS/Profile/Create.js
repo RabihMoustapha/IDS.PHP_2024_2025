@@ -4,7 +4,7 @@ const username = document.getElementById("username");
 
 async function Create() {
     const userData = {
-        username: username.value,
+        name: username.value,
         email: email.value,
         password: password.value
     };
@@ -21,6 +21,8 @@ async function Create() {
         if (response.ok) {
             const result = await response.json();
             alert("Signup successful!");
+            localStorage.setItem("ProfileID", result.id);
+            localStorage.setItem("ProfileName", result.username);
             window.location.href = "../Home.php";
         } else {
             alert("Signup failed. Please try again.");
@@ -28,13 +30,4 @@ async function Create() {
     } catch (error) {
         console.error("Error:", error);
     }
-}
-
-function isLoggedIn() {
-    return localStorage.getItem("ProfileID") !== null;
-}
-
-if(!isLoggedIn()) {
-    alert("You are not logged in. Redirecting to login page.");
-    window.location.href = "../Login.php";
 }

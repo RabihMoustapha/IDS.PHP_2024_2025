@@ -15,8 +15,8 @@ async function View() {
 
         if (response.ok) {
             const profile = await response.json();
-            document.getElementById("profile-name").textContent = profile.name;
-            document.getElementById("profile-password").textContent = profile.password;
+            document.getElementById("profile-name").innerHTML = profile.name;
+            document.getElementById("profile-password").innerHTML = profile.password;
         } else {
             throw new Error("Failed to fetch profile details.");
         }

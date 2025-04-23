@@ -1,8 +1,18 @@
 const postsList = document.getElementById("posts-list");
 
 async function View() {
+    const data = {
+        id: localStorage.getItem("ProfileID")
+    }
+
     try {
-        const response = await fetch(`http://localhost/IDS/Backend/Post/GetByID.php`);
+        const response = await fetch(`http://localhost/IDS/Backend/Post/GetByID.php`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(post)
+        });
         if (response.ok) {
             const posts = await response.json();
             posts.forEach(post => {
@@ -17,7 +27,7 @@ async function View() {
                     <a href="Delete.php?id=${post.id}"><img class="icons" src="delete.png" alt="Delete"></a>
                 `;
 
-                postsList.appendChild(postItem);
+                postsList.innerHTML(postItem);
             });
         } else {
             throw new Error("Failed to fetch posts.");
@@ -32,9 +42,9 @@ function isLoggedIn() {
     return localStorage.getItem("ProfileID") !== null;
 }
 
-if(!isLoggedIn()) {
+if (!isLoggedIn()) {
     alert("You are not logged in. Redirecting to login page.");
-    window.location.href = "../Login.php";
+    window.location.href = "../Profile/Login.php";
 }
 
 function Logout() {

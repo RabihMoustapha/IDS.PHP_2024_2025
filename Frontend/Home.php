@@ -15,14 +15,14 @@
         <li><a href="Profile/View.php">Profile</a></li>
         <li><a href="Post/Create.php">Create Post</a></li>
         <li><a href="Post/View.php">Your Posts</a></li>
-        <li><a href="#" onclick="Logout(); return false;">Logout</a></li>
+        <li><a href="#" onclick="Logout()">Logout</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section>
-      <form class="search-posts" action="javascript:void(0);" method="post" onsubmit="Search(); return false;">
+      <form class="search-posts" action="javascript:void(0);" method="post" onsubmit="Search()">
         <input id="search-bar" type="text" name="search" placeholder="Search posts..." required />
         <input type="submit" value="Search" />
       </form>

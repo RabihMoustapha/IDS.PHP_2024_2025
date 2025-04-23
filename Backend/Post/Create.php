@@ -28,16 +28,20 @@ function Create($pdo, $input)
             }
         }
 
-        $sql = "INSERT INTO post (ProfileID, profileName, title, description, image) VALUES (:ProfileID, :profileName, :title, :description, :image)";
+        $sql = "INSERT INTO post (profileID, profileName, title, description, image) VALUES (:ProfileID, :profileName, :title, :description, :image)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":ProfileID", $input["ProfileID"]);
-        $stmt->bindParam(":profileName", $input["profileName"]);
+        $stmt->bindParam(":profileName", $input["ProfileName"]);
         $stmt->bindParam(":title", $input["title"]);
         $stmt->bindParam(":description", $input["description"]);
         $stmt->bindParam(":image", $input["image"]);
         $stmt->execute();
-
-        echo json_encode(["success" => true, "message" => "Post created successfully"]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($result) {
+            echo json_encode(["success" => true, "message" => "Post created successfully"] + $result);
+        } else {
+            echo json_encode(["success" => false, "message" => "Post creation failed"]);
+        }
     } catch (PDOException $e) {
         echo json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]);
     }
